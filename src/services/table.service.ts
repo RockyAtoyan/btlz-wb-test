@@ -3,13 +3,12 @@ import { sheets_v4, Auth } from "googleapis";
 import { dbService } from "./db.service.js";
 import { TABLE_HEADERS } from "#utils/constants/table.constants.js";
 import { LIST_NAME } from "#utils/constants/app.constants.js";
-import env from '#config/env/env.js'
 
 class TableService {
     public async upload(tables: Array<string>, currentDate: string): Promise<void> {
         try {
             const auth: Auth.GoogleAuth = new google.auth.GoogleAuth({
-                apiKey: env.GOOGLE_SHEET_API_KEY,
+                keyFile: "credentials.json",
                 scopes: ["https://www.googleapis.com/auth/spreadsheets"],
             });
 
