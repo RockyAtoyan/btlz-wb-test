@@ -27,6 +27,7 @@ class DbService {
                 }
             }
         } catch (error) {
+            console.log(error)
             throw new Error("Update Error");
         }
     }
