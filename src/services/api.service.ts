@@ -21,6 +21,7 @@ class ApiService {
                 },
             });
             const data: GetBoxesResponse | undefined = response.data?.response?.data;
+            console.log("Response received:", data?.warehouseList.length + " items");
             if (!data) {
                 console.error("Error, no data");
                 return;
