@@ -29,13 +29,13 @@ const knegConfigs: Record<typeof NODE_ENV, Knex.Config> = {
         },
         migrations: {
             stub: 'src/config/knex/migration.stub.js',
-            directory: "./src/postgres/migrations",
+            directory: "./src/db/migrations",
             tableName: "migrations",
             extension: "ts",
         },
         seeds: {
             stub: 'src/config/knex/seed.stub.js',
-            directory: "./src/postgres/seeds",
+            directory: "./src/db/seeds",
             extension: "js",
         },
     },
