@@ -20,7 +20,6 @@ const envSchema = z.object({
             .transform((value) => parseInt(value)),
     ]),
     API_KEY: z.string(),
-    GOOGLE_SHEET_API_KEY: z.string(),
     REFRESH_TIME: z.union([
         z.undefined(),
         z
@@ -39,7 +38,6 @@ const env = envSchema.parse({
     NODE_ENV: process.env.NODE_ENV,
     APP_PORT: process.env.APP_PORT,
     API_KEY: process.env.API_KEY,
-    GOOGLE_SHEET_API_KEY: process.env.GOOGLE_SHEET_API_KEY,
     REFRESH_TIME: process.env.REFRESH_TIME,
 });
 

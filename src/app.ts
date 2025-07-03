@@ -1,6 +1,27 @@
-import knex, { migrate, seed } from "#postgres/knex.js";
+import { migrate, seed } from "#db/knex.js";
+import { apiService } from "#services/api.service.js";
+import { REFRESH_TIME } from "#utils/constants/app.constants.js";
 
-await migrate.latest();
-await seed.run();
+const createApp = () => ({
+    start: async () => {
+        apiService.getBoxes();
+        setInterval(() => apiService.getBoxes(), REFRESH_TIME);
+    },
+});
 
-console.log("All migrations and seeds have been run");
+const bootstrap = async () => {
+    const app = createApp();
+
+    try {
+        await migrate.latest();
+        await seed.run();
+        console.log("All migrations and seeds have been run");
+        app.start();
+    } catch (error) {
+        console.error("Starting error:", error);
+    }
+};
+
+bootstrap().then(() => {
+    console.log("App started successfully");
+});
